@@ -9,3 +9,11 @@ media/
 migrations/
 yolo*/
 settings.py
+*.pptx
+*.ppt
+
+yolov5/
+WireFrame/
+기타/
+주제 선정 및 회의 메모/
+PPT 내용 흐름도.docx
