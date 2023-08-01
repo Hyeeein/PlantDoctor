@@ -12,6 +12,7 @@ settings.py
 *.pptx
 *.ppt
 
+Datasets/
 yolov5/
 WireFrame/
 기타/
