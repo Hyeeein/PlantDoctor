@@ -109,13 +109,75 @@
 
 ### (2) 식물 인식 모델
 
-* 
+* 모델 성능 개선
+  - Baseline Model 학습 결과 94% 성능 < 식물 16가지 학습 결과 96% 성능
+  - 최종 모델은 16개의 식물 (총 21805개의 데이터)로 epoch 80, batch 32으로 학습시킨 ver2 모델을 사용
+    ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/4c3d7e15-c58f-4685-a486-78affa83045c)
+
+* Baseline 모델에서 yolov5 전이학습
+```
+# 학습에 사용될 데이터 셋 yaml 파일
+{'path': './datasets_yolo/', 
+'train': 'images/train', 
+'val': 'images/valid', 
+'test': 'images/test', 
+'nc': 16, 
+'names': ['orangejasmin', 'benghaltree', 'stuckyi', 'rosmari', 'ivy', 'geumjeonsoo', 'yeoincho', 'wilma', 'skindapsus', 'sansevieria', 'hongkong', 'sanhosoo', 'gaewoonjuk', 'tableyaja', 'hangwoonmok', 'monstera']}
+```
+```
+# Final Model
+!python train.py --img 224 --batch 20 --epochs 20 --data data/datasets.yaml --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name yolov5s_results
+```
 
 ### (3) 식물병 인식 모델
+
+* 모델 성능 개선
+  - 식물병 개수 2개, 총 이미지 수 6811개
+  - 이미지 사이즈 224 X 224로 고정하고, **Batch_size와 Epoch 수를 변경하면서 mAP@0.5 값을 확인**
+
+* Baseline 모델에서 이미지 추가하여 yolov5 전이학습
+```
+# Model ver1
+!python train.py --img 224 --batch 20 --epochs 20 --data data/data.yaml --device cuda:0 --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name diseases_ver1
+
+# Model ver2 : 에포크 30, 배치 사이즈 32로 조정 후 재학습
+!python train.py --img 224 --batch 32 --epochs 30 --data data/data.yaml --device cuda:0 --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name diseases_ver2
+
+# Model ver3 : 에포트 50, 배치 사이즈 64로 조정 후 재학습
+!python train.py --img 224 --batch 64 --epochs 50 --data data/data.yaml --device cuda:0 --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name diseases_ver3
+```
+
+* Final Model : Batch_size 64, Epoch 50으로 두었을 때, mAP@0.5가 0.948로 가장 높은 정확도를 보임
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/116ad2f8-8f93-4f32-a5a1-0f58548e34a8)
 
 
 ## 5. 모델 구현 결과
 
+* 식물 인식 Yolov5s 모델 학습결과
+  - 성능 지표로 **mAP@0.5, PR Curve, F1 Score** 지표 사용
+    ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/4d86014c-cece-43af-89f3-a574e0e80f20)
+  - Epoch 수가 80까지 늘어나면서 **정확도는 계속해서 증가**
+  - PR Curve는 '정밀도-재현율' 두 가지가 모두 그래프 **우측 상단에서 높게 형성**
+  - F1 Score는 재현율과 정밀도가 비슷해질수록 높아지는데, **Confidence 레벨이 높아질수록 상위 값에 머물고 있음**
 
+* **식물 인식 결과** ex) 산세베리아
+  
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/24f6e524-0616-4cf3-ac6a-6c17e6aafa79)
 
-## 6. 사업화 및 기대효과 / 발전 방향
+* 식물병 인식 Yolov5s 모델 학습결과
+  - 성능 지표로 **mAP@0.5, PR Curve, F1 Score** 지표 사용
+    ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/37aee137-da2a-4bec-af12-69b3108498f9)
+  - Epoch 수가 50까지 늘어나면서 **정확도는 계속해서 증가**
+  - PR Curve는 '정밀도-재현율' 두 가지가 모두 그래프 **우측 상단에서 높게 형성**
+  - F1 Score는 재현율과 정밀도가 비슷해질수록 높아지는데, **Confidence 레벨이 높아질수록 상위 값에 머물고 있음**
+
+* **식물병 인식 결과**
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/cd9b40d7-4fd5-4527-9e02-87a70ab8d603)
+
+## 6. 참고자료
+
+*이외에 구현한 서비스 기능은 아래의 포트폴리오를 참고해주세요*
+
+* [분석모델링 설계서](https://github.com/Hyeeein/PlantDoctor/blob/main/Documents/%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EB%B6%84%EC%84%9D%EC%84%A4%EA%B3%84%EC%84%9C.docx)
+* [포트폴리오](https://github.com/Hyeeein/PlantDoctor/blob/main/Documents/%5B%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%5D%20PlantDoctor.pdf)
