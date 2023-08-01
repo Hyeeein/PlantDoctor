@@ -1,107 +1,34 @@
-# 기업요구사항 기반의 문제해결 프로젝트
+# Business Requirements-Based Problem Solving Projects
 
-- 주제: 반려 식물 정보 검색 및 인식, 식물병 인식 서비스 "플랜트 닥터" 앱 개발
+- 주제: CNN 기반 모델을 활용한 식물 및 식물병 인식 서비스 'Pland Doctor' 앱 개발
 - 기간: 2022.04.04 ~ 2022.05.13
 - 참여 인원
   - 프론트 엔드: 김연우(팀장)
   - 백엔드 & 데이터 엔지니어: 강중모
   - 데이터 사이언티스트: 이유진, 강교철, 박혜인
-- 프로젝트에 활용된 기술: Python, Scala, Go, MySQL, Django, Hadoop, Spark, Elasticsearch, Airflow, Slack, Pytorch, Resnet50, VGG16, Yolov5s, Shellscript, HTML, CSS, Javascript, AWS EC2, AWS S3, Github
+- 기술 스택 : Python, Scala, Go, MySQL, Django, Hadoop, Spark, Elasticsearch, Airflow, Slack, Pytorch, Resnet50, VGG16, Yolov5s, Shellscript, HTML, CSS, Javascript, AWS EC2, AWS S3, Github
 
+## 1. 프로젝트 기획 배경 및 목표
+* 프로젝트 기획 배경
+  - 코로나 19 이후 국내 홈가드닝 매출 상승
+  - 많은 소비자 또한 반려식물 재배를 시작하며 식물에 대한 관심이 증가하고 있음
 
+* 시장조사
+  - 반려 식물과 관련한 서비스가 존재하지만, 다양한 문제점 존재
+  - 기존 플랫폼의 문제점 : 구성 복잡, 직관적이기 어려움, 엉뚱한 결과, 글씨가 짤린다 등
 
-## 개요
+* 프로젝트 목표: 시장조사의 문제점을 보완하고, 많은 소비자의 니즈에 충족하는 반려식물 서비스를 만들고자 함
+  - **식물 인식 서비스** : 식물 사진을 통해 어떤 식물인지 인식함으로써 식물의 이름과 식물을 키우는 데에 필요한 정보 중심으로 관련 정보 제공
+  - **식물병 인식 서비스** : 식물병이 의심되는 식물 사진을 통해 어떤 식물병에 걸렸는지 인식하고, 식물병의 종류와 예방법 정보 제공
+  - **반려식물 등록** : 반려식물 등록 서비스를 통해 식물의 종류에 따라 물주는 주기, 광도 등 식물별로 맞춤형 관리 서비스를 제공
+  - **유용한 정보 제공** : 사용자의 위치 정보 제공 동의를 받아 위치에 따라 식물이 예민하게 반응할 수 있는 자외선 지수나 습도 등 관련 정보를 제공
 
+## 2. Plant Doctor 서비스 소개
 
+## 3. 데이터
 
-#### 기획 배경
+## 4. 딥러닝 모델 구현 (CNN)
 
-![image](https://user-images.githubusercontent.com/87686562/193470528-621fde5f-a529-4cd2-a686-e5727ffc8c06.png)
+## 5. 실제 서비스 구현
 
-
-
-![image](https://user-images.githubusercontent.com/87686562/193471432-291de06d-91d1-4926-af2a-d262122eb6b2.png)
-
----
-
-
-
-#### Service Flow
-
-![image](https://user-images.githubusercontent.com/87686562/193470609-11cb3519-c0ca-4e48-8e4a-904cb6dbdc99.png)
-
----
-
-
-
-#### System Architecture
-
-![image](https://user-images.githubusercontent.com/87686562/193470670-df478314-d486-475c-bafb-5dcde30fa6ce.png)
-
----
-
-
-
-#### ERD
-
-![image](https://user-images.githubusercontent.com/87686562/193470764-b2877d77-ecf5-46ff-92f2-06a1950a95ca.png)
-
----
-
-
-
-#### DATA
-
-![image](https://user-images.githubusercontent.com/87686562/193470864-6dc5fffa-0549-4e5f-aa19-44f6b5d0c8fd.png)
-
-
-## 딥러닝 개발 과정
-
-- 딥러닝 분석 모형
-
-![image](https://user-images.githubusercontent.com/87686562/193470947-1b11a6b0-5dae-4313-8410-7894fef27ab2.png)
-
----
-
-- 성능 개선 과정
-
-![image](https://user-images.githubusercontent.com/87686562/193471018-b99f8634-e86f-4adc-b018-b9b614b06d79.png)
-
-
-
-## 주요 기능
-
-![image](https://user-images.githubusercontent.com/87686562/193471127-ad2974a5-cad9-45be-a308-64c938e149a5.png)
-
----
-
-
-
-![image](https://user-images.githubusercontent.com/87686562/193471626-2138bb20-97e4-4b1d-991b-e63bfef0a395.png)
-
----
-
-
-
-![image](https://user-images.githubusercontent.com/87686562/193471614-a672127e-5b6e-428f-be4f-50fb0611c629.png)
-
----
-
-
-
-![image](https://user-images.githubusercontent.com/87686562/193471594-39ce4eb7-3bd2-4db4-bd20-1379c62bf33f.png)
-
----
-
-
-
-![image](https://user-images.githubusercontent.com/87686562/193471570-6f610d32-3077-435f-8466-0a457f6d7345.png)
-
-
-
----
-
-
-
-![image](https://user-images.githubusercontent.com/87686562/193471558-6c97a364-b4b4-407b-9d83-144405fbdd14.png)
-
+## 6. 사업화 및 기대효과 / 발전 방향
