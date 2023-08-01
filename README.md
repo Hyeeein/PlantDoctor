@@ -83,7 +83,39 @@
     ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/707322fe-3452-4735-94d4-80cb9ff8a90b)
 
 ## 4. 딥러닝 모델 구현 (CNN)
+* 분석 모형
 
-## 5. 실제 서비스 구현
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/e3851d59-bad9-4e2e-928c-47c29a5d8b7b)
+
+### (1) 모델 선정 과정
+
+* 식물 인식, 식물병 인식 모델 모두 CNN 기반 모델 중 가장 접근성이 좋은 **ResNet50, VGG16, YOLOv5 모델 성능 비교**
+* **ResNet50, VGG16**은 `ImageDataGenerator`를 사용하여 데이터 증식 후 모델링 진행
+* **두 가지 인식 모델 모두 YOLOv5 모델 성능이 가장 좋아, Baseline Model로 선정**
+  - 식물 인식 모델 성능 비교
+ 
+  ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/96f06f0f-604a-4b4e-9019-e7ab26e2e4cb)
+  
+  - 식물병 인식 모델 성능 비교
+    
+  ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/e822cf36-2128-4cd0-8be6-e8bd9216e861)
+
+* YOLOv5는backbone을 depth multiple과 width multiple를 기준으로 하여 크기별로 s, m, l, x로 나눔
+  - 이는 small, medium, large, xlarge로 생각하면 구분이 쉬움
+  - 여기서 s가 가장 속도가 빠르지만 정확도가 비교적 떨어지고, x는 가장 느리지만 정확도가 향상됨
+    ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/e0a9be62-d075-41af-be65-555cf76baaf3)
+    *[사진 출처](https://velog.io/@qtly_u/n4ptcz54)*
+  - 주어진 시간 내에 많은 모델을 학습해보고, 정확도를 향상시키기 위해 s 모델을 선택하여 빠르게 모델링
+
+### (2) 식물 인식 모델
+
+* 
+
+### (3) 식물병 인식 모델
+
+
+## 5. 모델 구현 결과
+
+
 
 ## 6. 사업화 및 기대효과 / 발전 방향
