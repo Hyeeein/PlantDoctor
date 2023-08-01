@@ -24,8 +24,63 @@
   - **유용한 정보 제공** : 사용자의 위치 정보 제공 동의를 받아 위치에 따라 식물이 예민하게 반응할 수 있는 자외선 지수나 습도 등 관련 정보를 제공
 
 ## 2. Plant Doctor 서비스 소개
+* 메인 서비스 명 : Plant Doctor
+
+* 메인 로고
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/31029a2f-8f12-4a1d-a7ad-1b7356437906)
+
+* 서비스 소개
+  - CNN 기반 모델을 활용하여 **식물 및 식물병 인식 모델** 제공
+  - 사용자들이 반려식물을 손쉽게 관리할 수 있도록, **식물의 건강에 영향을 주는 정보 제공**
+  - 반려식물을 처음 키우는 사람도 **흥미롭게 이용할 수 있는 서비스** 제공
+  
+* 서비스 흐름도
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/f3232cab-72ed-44d5-9d2a-e2eec05447de)
+
+* 시스템 아키텍처
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/c0e5c882-1406-4b37-8e4f-18b5bc3568f8)
+
+* 사용 언어 : `GO`, `Scala`, `Python`
 
 ## 3. 데이터
+
+### (1) 사용한 데이터 목록
+* 식물 및 식물병 인식 모델에 사용하는 데이터
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/0ca3d0d4-53a0-4c30-8851-9ecf139505e9)
+
+* 위치정보, 온도, 습도, 날씨, 시간별 기온, 자외선 지수 API
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/f98fbafa-f2be-4a15-910b-83fdf513c3be)
+
+* 식물 검색 기능에 사용되는 데이터
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/38495a66-7bfd-46ec-860c-4b8007e7aa53)
+
+* 'Plant Doctor' ERD
+
+![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/b051e92c-b895-46db-baa2-2895960228f8)
+
+### (2) 데이터 전처리
+
+* 식물 인식 모델 (YOLOv5s)
+  - 크롤링한 식물 이미지 데이터 → **Annotation 라벨링 데이터의 부재**
+  - **사용자가 식물을 화면 가운데에서 찍는다는 시나리오** 가정 하에 이미지 중심 좌표 윚로 임의의 바운딩박스로 라벨링 데이터 생성
+  - 데이터 전처리 또한 식물이 중앙에 위치한 이미지 위주로 정제
+  
+  ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/3c78c1f8-5f7e-4538-8e0f-83025d7794ca)
+
+* 식물병 인식 모델 (YOLOv5s)
+  - 이미지 및 라벨 전처리 이슈 : AIHub 노지작물 질병진단 이미지, 라벨 데이터 활용 → **동일한 파일명으로 이미지와 라벨 데이터 매치**
+    
+    ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/9ec643f2-5d66-4b6c-bbe0-ebc249fc34d7)
+
+  - YOLOv5 모델에서 필요한 라벨 데이터 형식은 .txt 파일이므로, AIHub에 업로드 되어 있는 json 파일 값을 추출하여 변환
+
+    ![image](https://github.com/Hyeeein/PlantDoctor/assets/81239567/707322fe-3452-4735-94d4-80cb9ff8a90b)
 
 ## 4. 딥러닝 모델 구현 (CNN)
 
