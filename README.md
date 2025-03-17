@@ -1,6 +1,6 @@
 # Business Requirements-Based Problem Solving Projects
 
-- 주제: CNN 기반 모델을 활용한 식물 및 식물병 인식 서비스 'Pland Doctor' 앱 개발
+- 주제: CNN 기반 모델을 활용한 식물 및 식물병 인식 서비스 'Plant Doctor' 앱 개발
 - 기간: 2022.04.04 ~ 2022.05.13
 - 참여 인원
   - 프론트 엔드: 김연우(팀장)
